@@ -24,4 +24,4 @@
 * редактирование данных владельца фотогалереи
 ## Ссылки
 
-* [Ссылка на GitHub Pages](https://katbatist.github.io/mesto/)
+* [Ссылка на GitHub Pages](https://katbatist.github.io/mesto-react/)
