@@ -2,19 +2,21 @@ import React from 'react';
 
 function Card(props) {
   
+  let {card, onCardClick} = props;
+  
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
   }  
 
   return (
     <li className="card" >
-      <img className="card__image" alt="" src={props.card.link} onClick={handleClick}/>
+      <img className="card__image" alt={card.name} src={card.link} onClick={handleClick}/>
       <button className="card__delete-btn card__delete-btn_opened"></button>
       <div className="card__container">
-        <p className="card__caption">{props.card.name}</p>
+        <p className="card__caption">{card.name}</p>
         <div className="card__like-group">
           <button className="card__like-btn" type="button"></button> 
-          <span className="card__like-count">{props.card.likes.length}</span>
+          <span className="card__like-count">{card.likes.length}</span>
         </div>   
       </div>
     </li>
@@ -22,6 +24,3 @@ function Card(props) {
 }
 
 export default Card;
-
-//<button className={props.card.owner._id === props.userId ? "card__delete-btn" :
-//"card__delete-btn card__delete-btn_opened"}></button>

@@ -1,8 +1,10 @@
 import React from 'react';
-import {api} from '../utils/Api.js'
+import {api} from '../utils/api.js'
 import Card from './Card';
 
 function Main(props) {
+  let {onEditProfile, onAddPlace, onEditAvatar, onCardClick} = props;
+
   const [userName, setUserName] = React.useState("Жак Ив Кусто")
   const [userDescription, setUserDescription] = React.useState("Исследователь океана")
   const [userAvatar, setUserAvatar] = React.useState("")
@@ -25,19 +27,19 @@ function Main(props) {
       <section className="profile">
         <div className="profile__container-avatar">
           <img className="profile__avatar" alt="Аватар." src={userAvatar}/>
-            <button className="profile__avatar-btn"  onClick={props.onEditAvatar}></button>
+            <button className="profile__avatar-btn"  onClick={onEditAvatar}></button>
         </div>
         <div className="profile__info">
           <h1 className="profile__name">{userName}</h1>
-          <button className="profile__edit-btn" type="button" onClick={props.onEditProfile}></button>
+          <button className="profile__edit-btn" type="button" onClick={onEditProfile}></button>
           <p className="profile__job">{userDescription}</p>
         </div>
-        <button className="profile__add-btn" type="button" onClick={props.onAddPlace}></button>
+        <button className="profile__add-btn" type="button" onClick={onAddPlace}></button>
       </section>
       <section className="cards">
         <ul className="cards__container">
           {cards.map(res => (
-            <Card key={res._id} card = {res} userId = {userId} onCardClick={props.onCardClick}/>
+            <Card key={res._id} card = {res} onCardClick={onCardClick}/>
           ))}
         </ul>
       </section>
