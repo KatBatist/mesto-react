@@ -2,7 +2,7 @@ import React from 'react';
 
 function ImagePopup(props) {
   let {card, onClose} = props;
-
+  console.log(card)
   return (
     <div className= {card ? `popup popup-card popup_opened` : `popup popup-card`}>
       <figure className="popup-card__figure">
