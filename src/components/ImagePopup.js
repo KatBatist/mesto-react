@@ -2,9 +2,10 @@ import React from 'react';
 
 function ImagePopup(props) {
   let {card, onClose} = props;
-  console.log(card)
+  
   return (
-    <div className= {card ? `popup popup-card popup_opened` : `popup popup-card`}>
+    <div className= {Object.keys(card).length === 0  ? `popup popup-card` : 
+      `popup popup-card popup_opened`}>
       <figure className="popup-card__figure">
         <img className="popup-card__image" alt={card.name} src={card.link}/>
         <figcaption className="popup-card__caption">{card.name}</figcaption>
@@ -15,3 +16,4 @@ function ImagePopup(props) {
 }
 
 export default ImagePopup;
+
