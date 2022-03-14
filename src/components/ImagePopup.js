@@ -1,11 +1,9 @@
 import React from 'react';
 
-function ImagePopup(props) {
-  let {card, onClose} = props;
+function ImagePopup({card, onClose}) {
   
   return (
-    <div className= {Object.keys(card).length === 0  ? `popup popup-card` : 
-      `popup popup-card popup_opened`}>
+    <div className={`popup popup-card ${Object.keys(card).length !== 0 && 'popup_opened'}`}>
       <figure className="popup-card__figure">
         <img className="popup-card__image" alt={card.name} src={card.link}/>
         <figcaption className="popup-card__caption">{card.name}</figcaption>
@@ -16,4 +14,3 @@ function ImagePopup(props) {
 }
 
 export default ImagePopup;
-

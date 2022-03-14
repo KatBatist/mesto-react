@@ -2,13 +2,11 @@ import React from 'react';
 import {api} from '../utils/api.js'
 import Card from './Card';
 
-function Main(props) {
-  let {onEditProfile, onAddPlace, onEditAvatar, onCardClick} = props;
+function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick}) {
 
   const [userName, setUserName] = React.useState("Жак Ив Кусто")
   const [userDescription, setUserDescription] = React.useState("Исследователь океана")
   const [userAvatar, setUserAvatar] = React.useState("")
-  const [userId, setUserId] = React.useState(0)
   const [cards, setCards] = React.useState([])
 
   React.useEffect(() => {
@@ -17,10 +15,9 @@ function Main(props) {
       setUserName(userData.name)
       setUserDescription(userData.about);
       setUserAvatar(userData.avatar);
-      setUserId(userData._id);
       setCards(cardsData);
     })
-  }, [userName, userDescription, userAvatar, userId]);
+  }, []);
 
   return (
     <>

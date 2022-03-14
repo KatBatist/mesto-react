@@ -1,10 +1,9 @@
 import React from 'react';
 
-function PopupWithForm(props) {
+function PopupWithForm({name, title, buttonText, isOpen, onClose, children}) {
   
-  let {name, title, buttonText, isOpen, onClose, children} = props;
   return (
-    <div className= {isOpen ? `popup popup-${props.name} popup_opened` : 
+    <div className= {isOpen ? `popup popup-${name} popup_opened` : 
       `popup popup-${name}`}>
          <div className="popup__container">
           <h2 className="popup__header">{title}</h2>

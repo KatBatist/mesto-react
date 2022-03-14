@@ -1,8 +1,6 @@
 import React from 'react';
 
-function Card(props) {
-  
-  let {card, onCardClick} = props;
+function Card({card, onCardClick}) {
   
   function handleClick() {
     onCardClick(card);
