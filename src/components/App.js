@@ -12,42 +12,20 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
   const [selectedCard, setSelectedCard] = React.useState({})
 
-  function handleEscClose (e) {
-    if (e.key === 'Escape') { 
-      closeAllPopups();
-    }
-  }
-
-  function handleEventListener()
-  {
-    document.addEventListener('keydown', handleEscClose);
-    document.addEventListener('click', handlClick);
-  }
-
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
-    handleEventListener();
   };
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
-    handleEventListener();
   };
 
   function handleAddPlaceClick() { 
     setIsAddPlacePopupOpen(true);
-    handleEventListener();
   };
 
   function handleCardClick(card) {
     setSelectedCard(card);
-    handleEventListener();
-  }
-
-  function handlClick(e) {
-      if (e.target.classList.contains('popup') || e.target.classList.contains('popup__close-btn')) {
-        closeAllPopups();
-      }
   }
 
   function closeAllPopups() {
@@ -55,8 +33,6 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setSelectedCard({});
-    document.removeEventListener('keydown', handleEscClose);
-    document.removeEventListener('click', handlClick);
   }
 
   return (
@@ -70,14 +46,11 @@ function App() {
       <Footer />
       <ImagePopup 
         card={selectedCard} 
-        onClose={closeAllPopups} 
-        onClick={handlClick}
-        />
+        onClose={closeAllPopups} />
       <PopupWithForm 
         id="1" name="edit" title="Редактировать профиль" buttonText="Сохранить" 
         isOpen={isEditProfilePopupOpen} 
-        onClose={closeAllPopups} 
-        onClick={handlClick}>
+        onClose={closeAllPopups} >
         <input 
           className="form__input" 
           type="text" 
@@ -102,8 +75,7 @@ function App() {
       <PopupWithForm 
         id="2" name="add" title="Новое место" buttonText="Создать" 
         isOpen={isAddPlacePopupOpen} 
-        onClose={closeAllPopups} 
-        onClick={handlClick}>
+        onClose={closeAllPopups} >
         <input 
           className="form__input" 
           type="text" 
@@ -125,8 +97,7 @@ function App() {
       <PopupWithForm 
         id="3" name="avatar-edit" title="Обновить аватар" buttonText="Сохранить" 
         isOpen={isEditAvatarPopupOpen} 
-        onClose={closeAllPopups} 
-        onClick={handlClick}>
+        onClose={closeAllPopups} >
         <input 
           className="form__input" 
           type="url" 
