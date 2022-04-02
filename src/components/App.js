@@ -23,25 +23,14 @@ function App() {
   const [isCardDeletePopupOpen, setIsCardDeletePopupOpen] = React.useState(false)
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo()])
-    .then(([userData]) => {
-      setCurrentUser(userData)
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {}); 
-  }, []);
-
-  React.useEffect(() => {
-    Promise.all([api.getInitialCards()])
-    .then(([cardsData]) => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userData, cardsData]) => {
+      setCurrentUser(userData);
       setCards(cardsData);
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {}); 
+    });
   }, []);
 
   function handleEscClose (e) {
@@ -80,8 +69,7 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {}); 
+    });
   }
 
   function handleUpdateAvatar(user, evt) {
@@ -92,8 +80,7 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {}); 
+    });
   }
 
   function handleAddPlaceSubmit(place) {
@@ -104,8 +91,7 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {}); 
+    }); 
   }
 
   function handleCardLike(card) {
@@ -116,8 +102,7 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {}); 
+    }); 
   }
 
   function handleCardDelete() {
@@ -128,8 +113,7 @@ function App() {
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {}); 
+    }); 
   }
 
   function handleCardDeleteClick(card) {
