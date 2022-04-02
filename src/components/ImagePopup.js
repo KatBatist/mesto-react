@@ -1,5 +1,4 @@
 import React from 'react';
-import Popup from './Popup';
 
 function ImagePopup({card, onClose}) {
   
@@ -7,14 +6,13 @@ function ImagePopup({card, onClose}) {
 
   return (
     <>
-    <Popup isOpen = {isCard} onClose={onClose} />
-    <div className={`popup popup-card ${isCard && 'popup_opened'}`}>
-      <figure className="popup-card__figure">
-        <img className="popup-card__image" alt={card.name} src={card.link}/>
-        <figcaption className="popup-card__caption">{card.name}</figcaption>
-        <button className="popup__close-btn popup-card-close" type="button" onClick={onClose}></button>
-      </figure>
-    </div>
+      <div className={`popup popup-card ${isCard && 'popup_opened'}`}>
+        <figure className="popup-card__figure">
+          <img className="popup-card__image" alt={card.name} src={card.link}/>
+          <figcaption className="popup-card__caption">{card.name}</figcaption>
+          <button className="popup__close-btn popup-card-close" type="button" onClick={onClose}></button>
+        </figure>
+      </div>
     </>
   );
 }
